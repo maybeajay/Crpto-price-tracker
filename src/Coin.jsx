@@ -1,17 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import  './CoinStyles.css';
 import { Button } from 'react-bootstrap';
 import { FaPlus } from "react-icons/fa";
 const Coin = ({name, image, symbol, price, volume, priceChange})=>{
-    function addData (){
-        let arr ={
-            name: name,
-            symbol: symbol,
-            price: price
-        }
-        console.log(arr);
-        return arr;
-    }
+    const [coindata, setCoinData]=useState("")
     return(
         <div className="coin-container">
             <div className="coin-row">
@@ -27,7 +19,7 @@ const Coin = ({name, image, symbol, price, volume, priceChange})=>{
                         <p className="coin-percent green">{priceChange.toFixed(2)}%</p>
                     )
                 }
-                <Button variant="outline-light" onClick={addData}>Add <FaPlus /></Button>
+                <Button variant="outline-light" onClick={()=>setCoinData({name, image, symbol})}>Add <FaPlus /></Button>
                 </div>
             </div>
         </div>
